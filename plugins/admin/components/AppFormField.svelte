@@ -1,5 +1,5 @@
 <script>
-    import {FormField, ImagePicker, Input, Select, Switch} from 'svelitecms/components';
+    import {FormField, Textarea, ImagePicker, Input, Select, Switch} from 'svelitecms/components';
 
 	let { field, value, upload, file, ...rest } = $props();
 
@@ -16,10 +16,12 @@
 	{:else if field.type === 'switch'}
 		<Switch bind:value />
 	{:else if field.type === 'rich_text'}
-		Rich text editor
+        <Textarea bind:value />
 	{:else if field.type === 'image'}
         <ImagePicker {file} {upload} multiple={field.multiple} bind:value />
 	{:else if field.type === 'custom'}
 		<svelte:component this={field.component} {...field.props} bind:value />
+    {:else}
+        TODO: {field.type}
 	{/if}
 </FormField>
