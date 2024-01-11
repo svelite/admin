@@ -4,7 +4,7 @@ import adapter from '@sveltejs/adapter-node'
 // adapter config as string..
 export default svelte({
     kit: {
-        files: {lib: './plugins'},
+        // files: {lib: './plugins'},
         adapter: adapter()
     }
 })
