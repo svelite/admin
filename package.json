@@ -1,6 +1,6 @@
 {
     "name": "svelite-admin",
-    "version": "0.0.2-next.4",
+    "version": "0.0.2-next.5",
     "type": "module",
     "scripts": {
         "dev": "vite",
