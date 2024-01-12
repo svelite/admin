@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import {getContext} from 'svelte';
+	import {getContext, onMount} from 'svelte';
 
     import {Button, Card, CardBody, Tabs, TabPanel} from 'svelitecms/components';
 
@@ -11,6 +11,7 @@
 	let { data, load, tabs = [], goBack = false, submit, fields, actions, params, ...rest } = $props();
 
 	let value: any = $state(data.value ?? {});
+    let loading = $state(true)
 
     const {back} = getContext('PAGE')
 
@@ -26,9 +27,14 @@
 		}
 	}
 
+    onMount(() => {
+        loading = false
+
+    })
+
 </script>
 
-<Form onsubmit={onSubmit}>
+<Form onsubmit={onSubmit} {loading}>
     {#each tabs ?? [] as tab}
         <TabPanel name={tab}>
             {#each fields.filter(x => x.tab === tab || (tab === 'General' && !x.tab)) as field}
@@ -36,6 +42,12 @@
             {/each}
 
         </TabPanel>
+    {:else}
+        <CardBody>
+            {#each fields.filter(x => !x.tab) as field}
+                <AppFormField upload={data.upload} file={data.file} {field} bind:value={value[field.name]} />
+            {/each}
+        </CardBody>
     {/each}
 
     {#snippet footer()}

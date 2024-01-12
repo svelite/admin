@@ -1,34 +1,5 @@
 import { AdminPanelPlugin } from './plugins'
 
-async function folderBasedModules(files = []) {
-    let modules = {}
-
-    for(let file of files) {
-        const module = await import(`./modules/${file}.svelte`)
-        
-        modules[file] = {
-            name: file,
-            description: 'todo',
-            component: module.default
-        }
-
-        try {
-            const meta = await import(`./modules/${file}.js`)
-            if(meta.default) {
-                modules[file].name = meta.default.name
-                modules[file].description = meta.default.description
-            }
-
-        } catch(err) {
-            // 
-        }
-    }
-    
-    return {
-        modules
-    }
-}
-
 export default {
     plugins: [
        AdminPanelPlugin({

@@ -22,6 +22,7 @@ export default {
 				.first()
 				.then((res) => res.data);
 
+                console.log(value)
 			result.value = value;
 		}
 

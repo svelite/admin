@@ -11,6 +11,7 @@ export default {
 			.all()
 			.then((res) => res.data);
 
+        console.log(pages)
 		let page = null;
 		for (let pageItem of pages) {
 			if (params.slug == pageItem.slug) {

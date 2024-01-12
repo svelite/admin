@@ -1,10 +1,6 @@
 import svelte from 'svelitecms/config/svelte'
-import adapter from '@sveltejs/adapter-node'
 
 // adapter config as string..
-export default svelte({
-    kit: {
-        // files: {lib: './plugins'},
-        adapter: adapter()
-    }
-})
+const config = svelte({adapter: 'node'})
+console.log(config)
+export default config;
