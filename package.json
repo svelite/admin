@@ -2,6 +2,8 @@
     "name": "svelite-admin",
     "version": "0.0.2-next.8",
     "type": "module",
+    "module": "./dist/index.js",
+    "svelte": "./dist/index.js",
     "main": "./dist/index.js",
     "scripts": {
         "dev": "vite",
@@ -17,6 +19,6 @@
         "svelte": "^5.0.0-next.34"
     },
     "dependencies": {
-        "svelitecms": "^0.0.2-next.38"
+        "svelitecms": "^0.0.2-next.41"
     }
 }
