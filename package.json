@@ -5,7 +5,7 @@
     "main": "./dist/index.js",
     "scripts": {
         "dev": "vite",
-        "build": "svelte-package"
+        "build": "svelte-kit sync && svelte-package"
     },
     "exports": {
         ".": {
