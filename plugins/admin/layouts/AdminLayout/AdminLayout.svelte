@@ -21,7 +21,11 @@
 					<Icon onclick={toggleSidebar} name="menu-2" />
 				</div>
 			{/if}
-			<img class="logo" src="/files/{logo}" />
+            {#if logo.includes('/')}
+                <img class="logo" src="{logo}" />
+            {:else}
+                <img class="logo" src="/files/{logo}" />
+            {/if}
 		</div>
 
 		<div class="hidden md:flex">
