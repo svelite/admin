@@ -3,7 +3,7 @@
     
     import {SvSlot} from 'svelitecms';
 
-	import { Button, Icon, Page } from 'svelitecms/components';
+	import { Button, Icon, Page } from '$admin/components';
 
 	let { title = '', hasBack = false, content = [], ...data } = $props();
 

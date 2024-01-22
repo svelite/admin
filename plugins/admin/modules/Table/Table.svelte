@@ -1,7 +1,5 @@
 <script lang="ts">
-	import {invalidateAll} from '$app/navigation';
-
-	import { Button, ButtonGroup, Modal, Card, Icon, ModalBody, Table, TableColumn, } from 'svelitecms/components';
+	import { Button, ButtonGroup, Modal, Card, Icon, ModalBody, Table, TableColumn, } from '$admin/components';
 
 	let { data, collection = '', columns = [], actions = [] } = $props();
 
@@ -20,7 +18,7 @@
 
 	async function onRemove() {
 		await data.remove(activeItem.id);
-        invalidateAll()
+        // invalidateAll()
         removeConfirmOpen = false;
 	}
 </script>

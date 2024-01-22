@@ -13,6 +13,7 @@ export default {
 	async load(props, api) {
 		console.log('load', api);
 		return {
+            pathname: '/admin/todo',
             user: await api.auth.getUser(),
 			logout() {
 				console.log(api);

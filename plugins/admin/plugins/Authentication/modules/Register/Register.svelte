@@ -1,5 +1,5 @@
 <script>
-	import { Input, Button, ButtonGroup, Card, CardBody, CardHeader, FormField } from 'svelitecms/components';
+	import { Input, Button, ButtonGroup, Card, CardBody, CardHeader, FormField } from '$admin/components';
 
 	let request = $state({});
 

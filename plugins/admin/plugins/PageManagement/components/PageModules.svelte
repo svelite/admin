@@ -1,9 +1,7 @@
 <script>
-    import {Accordion, Button, Modal, Icon, ModalHeader, ModalBody} from 'svelitecms/components';
+    import {AppFormField, Accordion, Button, Modal, Icon, ModalHeader, ModalBody} from '$admin/components';
 
-	import AppFormField from '$lib/admin/components/AppFormField.svelte';
-
-	let { value = [], modules, ...rest } = $props();
+	let { value, modules, ...rest } = $props();
 
 	let addModalOpen = $state(false);
 
@@ -21,7 +19,7 @@
 </script>
 
 <div>
-	{#each value as item}
+	{#each value ?? [] as item}
 		<Accordion title={item.name}>
 			{#each Object.keys(modules[item.name].props ?? {}) as prop}
 				<AppFormField field={modules[item.name].props[prop]} bind:value={item.props[prop]} />

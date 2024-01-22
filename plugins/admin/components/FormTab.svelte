@@ -1,5 +1,5 @@
 <script>
-    import {TabPanel} from "svelitecms/components";
+    import {TabPanel} from "$admin/components";
 
     let {name, children} = $props()
 </script>

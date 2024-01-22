@@ -1,4 +1,4 @@
-import modules from './modules/index.js';
+ import modules from './modules/index.js';
 import layouts from './layouts/index.js';
 
 import AuthenticationPlugin from './plugins/Authentication/plugin.js'
@@ -84,3 +84,4 @@ export function AdminPanelPlugin(config: any) {
 		layouts
 	};
 }
+

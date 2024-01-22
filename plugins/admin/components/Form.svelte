@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Tabs} from "svelitecms/components";
+    import {Tabs} from "$admin/components";
 
     let {loading, children, footer, ...rest} = $props()
 

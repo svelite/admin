@@ -1,6 +1,16 @@
-import vite from 'svelitecms/config/vite'
+import path from 'path'
+import {svelite} from 'svelitecms/vite'
 
-const config = vite()
-console.log(config)
-export default config
+console.log('vite config')
+export default {
+    plugins: [
+        svelite()
+    ],
+    resolve: {
+        alias: {
+            "$admin": path.resolve('./plugins/admin'),
 
+        }
+    },
+
+}

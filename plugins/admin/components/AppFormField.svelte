@@ -1,5 +1,5 @@
 <script>
-    import {FormField, Textarea, ImagePicker, Input, Select, Switch} from 'svelitecms/components';
+    import {FormField, Textarea, ImagePicker, Input, Select, Switch} from '$admin/components';
 
 	let { field, value, upload, file, ...rest } = $props();
 

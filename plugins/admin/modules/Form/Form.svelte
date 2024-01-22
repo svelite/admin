@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import {getContext, onMount} from 'svelte';
 
-    import {Button, Card, CardBody, Tabs, TabPanel} from 'svelitecms/components';
+    import {Button, Card, CardBody, Tabs, TabPanel} from '$admin/components';
 
     import Form from '../../components/Form.svelte'
     import FormTab from '../../components/FormTab.svelte'

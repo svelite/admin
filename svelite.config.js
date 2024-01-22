@@ -1,8 +1,11 @@
-import { AdminPanelPlugin } from './plugins'
+import { AdminPanelPlugin } from './plugins/admin/plugin'
+import Header from './modules/Header.svelte'
+import HelloWorld from './modules/HelloWorld.svelte'
 
 export default {
     plugins: [
        AdminPanelPlugin({
+           pageManagement: false,
            collections: [
                {name: 'Books', slug: 'books', fields: [
                    {name: 'title', label: 'Title', type: 'plain_text'},
@@ -18,13 +21,14 @@ export default {
     ],
     // custom modules
     modules: {
-
+        Header,
+        HelloWorld
     },
     // custom layouts
     layouts: {},
     pages: [
         {
-            slug: 'hello', 
+            slug: '/hello', 
             title: 'Hello', 
             modules: [
                 { name: "Header", props: {}},
