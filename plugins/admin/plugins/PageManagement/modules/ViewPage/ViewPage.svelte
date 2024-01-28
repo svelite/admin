@@ -1,5 +1,5 @@
 <script>
-	import { SvModule } from 'svelitecms';
+	import { SvModule } from 'svelitecms/components';
 
 	let { modules, data } = $props();
 

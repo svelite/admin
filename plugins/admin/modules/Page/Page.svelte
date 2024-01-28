@@ -1,7 +1,7 @@
 <script>
 	import {setContext} from 'svelte';
     
-    import {SvSlot} from 'svelitecms';
+    import {SvSlot} from 'svelitecms/components';
 
 	import { Button, Icon, Page } from '$admin/components';
 

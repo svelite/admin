@@ -4,7 +4,7 @@ import {svelite} from 'svelitecms/vite'
 console.log('vite config')
 export default {
     plugins: [
-        svelite()
+//         svelite()
     ],
     resolve: {
         alias: {
