@@ -1,5 +1,24 @@
+<script context="module">
+
+	export async function load({props, api}) {
+		console.log('load table data', props);
+        let response = await api.db(props.collection).find().all()
+
+		let items = response.data
+
+            console.log("load table", {response, items})
+		return {
+			async remove(id) {
+				await api.db(props.collection).remove(id);
+				return true;
+			},
+			items,
+			reload() {}
+		};
+	}
+</script>
 <script lang="ts">
-	import { Button, ButtonGroup, Modal, Card, Icon, ModalBody, Table, TableColumn, } from '$admin/components';
+	import { Button, ButtonGroup, Modal, Card, Icon, ModalBody, Table, TableColumn, } from '$plugins/admin/components';
 
 	let { data, collection = '', columns = [], actions = [] } = $props();
 

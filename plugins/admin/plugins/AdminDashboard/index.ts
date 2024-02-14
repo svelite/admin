@@ -8,6 +8,7 @@ export default (config: any) => {
         layout: config.layout,
         modules: [] // Dashboard
     });
+
     return {
         pages
     }

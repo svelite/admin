@@ -3,7 +3,7 @@
     
     import {SvSlot} from 'svelitecms/components';
 
-	import { Button, Icon, Page } from '$admin/components';
+	import { Button, Icon, Page } from '$plugins/admin/components';
 
 	let { title = '', hasBack = false, content = [], ...data } = $props();
 
@@ -29,6 +29,6 @@
         {/snippet}
 
 	{#snippet children()}
-		<SvSlot slot={content} />
+		<SvSlot items={content} />
 	{/snippet}
 </Page>

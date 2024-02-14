@@ -1,5 +1,5 @@
 <script>
-    import {TabPanel} from "$admin/components";
+    import {TabPanel} from "$plugins/admin/components";
 
     let {name, children} = $props()
 </script>

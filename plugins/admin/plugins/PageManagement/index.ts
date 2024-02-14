@@ -1,5 +1,3 @@
-import modules from './modules/index.js'
-
 import PageModules from './components/PageModules.svelte';
 import {form, page, table} from "../../helpers/index.js";
 
@@ -9,7 +7,7 @@ export default (config: any) => {
     const adminPrefix = config.adminPrefix;
     const uiModules = config.uiModules;
 
-    const pages = []
+    const pages: any[] = []
 
     // /admin/files routes and upload/edit/remove from admin panel
     const listPage = {
@@ -135,6 +133,8 @@ export default (config: any) => {
 
     return {
         pages,
-        modules
+        modules: {
+            ViewPage: import('./modules/ViewPage.svelte')
+        }
     }
 }

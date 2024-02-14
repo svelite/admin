@@ -1,6 +1,4 @@
-import { AdminPanelPlugin } from './plugins/admin/plugin'
-import Header from './modules/Header.svelte'
-import HelloWorld from './modules/HelloWorld.svelte'
+import AdminPanelPlugin from './plugins/admin'
 
 export default {
     plugins: [
@@ -21,8 +19,8 @@ export default {
     ],
     // custom modules
     modules: {
-        Header,
-        HelloWorld
+        Header: import('./modules/Header.svelte'),
+        HelloWorld: import('./modules/HelloWorld.svelte')
     },
     // custom layouts
     layouts: {},

@@ -1,7 +1,20 @@
+<script context="module">
+    export async function load({props, api}) {
+		console.log('load', api);
+		return {
+            pathname: '/admin/todo',
+            user: await api('/getUser').get(),
+			logout() {
+				console.log(api);
+				return api.auth.logout();
+			}
+		};
+    }
+</script>
 <script>
-    import {Layout, SidebarItem, Icon} from '$admin/components';
+    import {Layout, SidebarItem, Icon} from '$plugins/admin/components';
 
-	let { dir, theme, children, logo, sidebar: sidebarItems = [], data, ...restProps } = $props();
+	let { dir, theme, logo, sidebar: sidebarItems = [], data, ...restProps } = $props();
 
 	let showSidebar = $state(false);
 
@@ -10,6 +23,10 @@
 	}
 </script>
 
+<svelte:head>
+<script src="https://cdn.tailwindcss.com"></script>
+
+</svelte:head>
 
 <Layout bind:showSidebar {dir} {theme} {...restProps}>
 	{#snippet header({ hasSidebar })}
@@ -37,23 +54,23 @@
             {@const visible = item.visible ? item.visible({user: data.user}) : true}
             {#if visible} 
                 {#if item.submenu}
-                    {@const active = item.submenu.some(x => x.href === $data.pathname)}
+                    {@const active = item.submenu.some(x => x.href === data.pathname)}
                     <SidebarItem href={item.href} {active} title={item.title} icon={item.icon}>
                         {#each item.submenu as menu}
                             {@const visible2 = menu.visible ? menu.visible({user: data.user}) : true}
                             {#if visible2}
-                                <SidebarItem level={2} href={menu.href} active={menu.href === $data.pathname} title={menu.title} />
+                                <SidebarItem level={2} href={menu.href} active={menu.href === data.pathname} title={menu.title} />
                             {/if}
                         {/each}
                     </SidebarItem>
                 {:else}
-                    <SidebarItem active={$data.pathname === item.href} href={item.href} title={item.title} icon={item.icon} />
+                    <SidebarItem active={data.pathname === item.href} href={item.href} title={item.title} icon={item.icon} />
                 {/if}
             {/if}
 		{/each}
 	{/snippet}
 
-	{@render children()}
+    <slot/>
 </Layout>
 
 <style>

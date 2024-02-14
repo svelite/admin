@@ -15,12 +15,11 @@
             "default": "./dist/index.js"
         }
     },
-    "devDependencies": {
-        "svelte": "^5.0.0-next.34"
-    },
     "dependencies": {
         "iconify-icon": "^1.0.8",
         "svelitecms": "file:../svelite",
+        "svelte": "^5.0.0-next.54",
+        "tailwindcss": "^3.4.1",
         "tslib": "^2.6.2",
         "typescript": "^5.3.3",
         "vite": "^5.1.0-beta.0"

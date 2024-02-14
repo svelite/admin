@@ -1,1 +1,1 @@
-export * from './admin/plugin.js'
+export * from './admin'

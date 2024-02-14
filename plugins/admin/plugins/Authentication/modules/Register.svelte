@@ -1,5 +1,15 @@
+<script context="module">
+	export async function load({api}) {
+		return {
+			register({ username, password, email, name }) {
+				console.log('register');
+				return api('/register').post({ username, password, email, name });
+			}
+		};
+	}
+</script>
 <script>
-	import { Input, Button, ButtonGroup, Card, CardBody, CardHeader, FormField } from '$admin/components';
+	import { Input, Button, ButtonGroup, Card, CardBody, CardHeader, FormField } from '$plugins/admin/components';
 
 	let request = $state({});
 

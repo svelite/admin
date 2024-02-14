@@ -1,5 +1,3 @@
-import modules from "./modules/index.js";
-import layouts from "./layouts/index.js";
 import {form, page, table} from "../../helpers/index.js";
 
 export default (config) => {
@@ -7,7 +5,6 @@ export default (config) => {
     const adminPrefix = config.adminPrefix ?? 'admin'
 
     const hasUserManagement = config.userManagement !== false;
-    const collections = config.collections ?? []
 
     const authLayout = {
         name: 'AuthLayout',
@@ -156,8 +153,6 @@ export default (config) => {
                 hasBack: false
             })
         ]
-
-
     }
 
 
@@ -177,16 +172,26 @@ export default (config) => {
                 { title: 'Roles', href: '/admin/roles' },
             ]
         })
-        pages = [...pages, userList, userCreate, userUpdate, roleCreate, roleList]
-
+        pages = [
+            ...pages, 
+            userList, 
+            userCreate, 
+            userUpdate, 
+            roleCreate, 
+            roleList
+        ]
     }
 
     config.layout.props.sidebar.push({ icon: 'logout', title: 'Logout', href: '/auth/logout' });
 
     return {
         pages,
-        modules,
-        layouts
+        modules: {
+            Login: import('./modules/Login.svelte'),
+            Register: import('./modules/Register.svelte'),
+        },
+        layouts: {
+            AuthLayout: import('./layouts/AuthLayout.svelte')
+        }
     }
-
 }

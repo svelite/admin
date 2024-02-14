@@ -1,11 +1,8 @@
- import modules from './modules/index.js';
-import layouts from './layouts/index.js';
-
-import AuthenticationPlugin from './plugins/Authentication/plugin.js'
-import AdminDashboardPlugin from './plugins/AdminDashboard/plugin.js'
-import PageManagementPlugin from './plugins/PageManagement/plugin.js'
-import ContentManagementPlugin from './plugins/ContentManagement/plugin.js'
-import ContentTypeBuilderPlugin from './plugins/ContentTypeBuilder/plugin.js'
+import AuthenticationPlugin from './plugins/Authentication'
+import AdminDashboardPlugin from './plugins/AdminDashboard'
+import PageManagementPlugin from './plugins/PageManagement'
+import ContentManagementPlugin from './plugins/ContentManagement'
+import ContentTypeBuilderPlugin from './plugins/ContentTypeBuilder'
 
 export function getAdminLayout(config: any) {
     return {
@@ -18,7 +15,7 @@ export function getAdminLayout(config: any) {
         }
     } }
 
-export function AdminPanelPlugin(config: any) {
+export default function AdminPanelPlugin(config: any) {
     let plugins = []
 
     let collections = config.collections ?? []
@@ -80,8 +77,14 @@ export function AdminPanelPlugin(config: any) {
 
 	return {
         plugins,
-		modules,
-		layouts
+		modules: {
+            Page: import('./modules/Page.svelte'),
+            Form: import('./modules/Form.svelte'),
+            Table: import('./modules/Table.svelte')
+        },
+		layouts: {
+            AdminLayout: import('./layouts/AdminLayout.svelte')
+        }
 	};
 }
 

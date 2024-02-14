@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Tabs} from "$admin/components";
+    import {Tabs} from "$plugins/admin/components";
 
     let {loading, children, footer, ...rest} = $props()
 

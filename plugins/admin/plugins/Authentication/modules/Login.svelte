@@ -1,5 +1,15 @@
+<script context="module">
+
+    export async function load({api}) {
+		return {
+			login(body) {
+				return api.auth.login(body);
+			}
+		};
+	}
+</script>
 <script>
-	import { Button, ButtonGroup, Card, CardBody, CardHeader, FormField, Input } from '$admin/components';
+	import { Button, ButtonGroup, Card, CardBody, CardHeader, FormField, Input } from '$plugins/admin/components';
 
 	let request = $state({});
 

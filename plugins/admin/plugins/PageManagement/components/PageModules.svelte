@@ -1,5 +1,5 @@
 <script>
-    import {AppFormField, Accordion, Button, Modal, Icon, ModalHeader, ModalBody} from '$admin/components';
+    import {AppFormField, Accordion, Button, Modal, Icon, ModalHeader, ModalBody} from '$plugins/admin/components';
 
 	let { value, modules, ...rest } = $props();
 

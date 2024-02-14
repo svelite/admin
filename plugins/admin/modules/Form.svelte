@@ -1,11 +1,45 @@
+<script context="module">
+	export async function load({props, api, params}) {
+		let result: any = {};
+		console.log(props, params);
+
+		if (props.load) {
+			const [collection, field, op, val] = props.load.split(':');
+
+			const value = await api
+				.db(collection)
+				.find()
+				.filter(field, op, params[val])
+				.first()
+				.then((res) => res.data);
+
+                console.log(value)
+			result.value = value;
+		}
+
+		if (props.submit) {
+			result.submit = async (newValue) => {
+				const [collection, action] = props.submit.action.split(':');
+				await api.db(collection)[action](newValue);
+
+				return true;
+			};
+		}
+
+        result.upload = api.upload
+        result.file = api.file
+
+		return result;
+	}
+</script>
 <script lang="ts">
 	import {getContext, onMount} from 'svelte';
 
-    import {Button, Card, CardBody, Tabs, TabPanel} from '$admin/components';
+    import {Button, Card, CardBody, Tabs, TabPanel} from '$plugins/admin/components';
 
-    import Form from '../../components/Form.svelte'
-    import FormTab from '../../components/FormTab.svelte'
-	import AppFormField from '../../components/AppFormField.svelte';
+    import Form from '../components/Form.svelte'
+    import FormTab from '../components/FormTab.svelte'
+	import AppFormField from '../components/AppFormField.svelte';
 
 	let { data, load, tabs = [], goBack = false, submit, fields, actions, params, ...rest } = $props();
 
