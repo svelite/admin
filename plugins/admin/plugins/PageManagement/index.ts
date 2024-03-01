@@ -16,7 +16,7 @@ export default (config: any) => {
         modules: [
             page({
                 title: 'Page List',
-                hasBack: false,
+                backUrl: '',
                 actions: [
                     {
                         text: 'Create Page',
@@ -72,7 +72,7 @@ export default (config: any) => {
             page({
                 title: 'Create Page',
                 actions: [],
-                hasBack: true,
+                backUrl: adminPrefix + '/pages',
                 content: [
                     form(pageFormFields, ['cancel'], {
                         color: 'primray',
@@ -86,12 +86,12 @@ export default (config: any) => {
 
     const editPage = {
         title: 'Edit Page',
-        slug: 'admin/pages/{id}',
+        slug: 'admin/pages/id',
         layout,
         modules: [
             page({
                 title: 'Edit Page',
-                hasBack: true,
+                backUrl: adminPrefix + '/pages',
                 actions: [],
                 content: [
                     form(

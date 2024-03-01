@@ -1,15 +1,13 @@
 <script context="module">
-
 	export async function load({props, api}) {
-		console.log('load table data', props);
-        let response = await api.db(props.collection).find().all()
+        let response = await api(`/api/content/${props.collection}/query`).post()
 
 		let items = response.data
 
             console.log("load table", {response, items})
 		return {
 			async remove(id) {
-				await api.db(props.collection).remove(id);
+				await api(`/api/content/${props.collection}/remove`).post({id});
 				return true;
 			},
 			items,
@@ -17,6 +15,7 @@
 		};
 	}
 </script>
+
 <script lang="ts">
 	import { Button, ButtonGroup, Modal, Card, Icon, ModalBody, Table, TableColumn, } from '$plugins/admin/components';
 

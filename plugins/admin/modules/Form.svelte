@@ -6,12 +6,18 @@
 		if (props.load) {
 			const [collection, field, op, val] = props.load.split(':');
 
-			const value = await api
-				.db(collection)
-				.find()
-				.filter(field, op, params[val])
-				.first()
-				.then((res) => res.data);
+			const value = await api(`/api/content/${collection}/query`)
+				.post({
+                    filters: {
+                        fields: {
+                            field: field,
+                            operator: op,
+                            value: val
+                        }, 
+                        operator: op, 
+                        value: params[val]
+                    }
+                }).then((res) => res.data[0]);
 
                 console.log(value)
 			result.value = value;
@@ -20,7 +26,7 @@
 		if (props.submit) {
 			result.submit = async (newValue) => {
 				const [collection, action] = props.submit.action.split(':');
-				await api.db(collection)[action](newValue);
+				await api(`/api/content/${collection}/${action}`).post(newValue);
 
 				return true;
 			};

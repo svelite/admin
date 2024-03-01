@@ -62,7 +62,7 @@ export default (config) => {
             page({title: "Create Role", actions: [], content: [
                 roleForm('create')
             ],
-            hasBack: true
+            backUrl: adminPrefix + '/roles'
             })
         ]
     }
@@ -81,7 +81,7 @@ export default (config) => {
                     {name: 'email', label: 'Email', type: 'text'},
                     {name: 'status', label: 'Status', type: 'badge'},
                 ], ['remove', {icon: 'pencil', href: `/${adminPrefix}/users/{id}`, color: 'primary'}])
-            ], hasBack: false})
+            ], backUrl: ''})
         ]
     }
 
@@ -100,11 +100,11 @@ export default (config) => {
     ]
 
     const userUpdate = {
-        slug: adminPrefix + '/users/{id}',
-        layout: config.layout,
+        slug: adminPrefix + '/users/:id',
+        layout: config.layout,  
         title: "Edit User",
         modules: [
-            page({title: "Create User", hasBack: true, actions: [], content: [
+            page({title: "Edit User", backUrl: adminPrefix + '/users', actions: [], content: [
                 form(userFields.filter(x=> x.name !== 'password'), [], {color: 'primary', text: "Update", action: "_users:update"}, "_users:id:=:id", true, ["General", "Account"]),
                 form([
                     {name: 'password', label: 'Password', type: 'plain_text'}
@@ -123,7 +123,7 @@ export default (config) => {
         layout: config.layout,
         title: "Add User",
         modules: [
-            page({title: "Add User", hasBack: true, actions: [], content: [
+            page({title: "Add User", backUrl: adminPrefix + '/users', actions: [], content: [
                 form(userFields, [], {color: 'primary', text: "Add", action: "_users:insert"}, "", true, ["General", "Account"]),
             ]})
         ]
@@ -150,7 +150,7 @@ export default (config) => {
                         {name: 'description', label: 'Description', type: 'plain_text'}
                     ], ['remove'])
                 ], 
-                hasBack: false
+                backUrl: ''
             })
         ]
     }
@@ -183,6 +183,8 @@ export default (config) => {
     }
 
     config.layout.props.sidebar.push({ icon: 'logout', title: 'Logout', href: '/auth/logout' });
+
+    console.log(pages, pages.map(x => x.slug))
 
     return {
         pages,

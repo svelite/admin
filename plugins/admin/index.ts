@@ -16,7 +16,7 @@ export function getAdminLayout(config: any) {
     } }
 
 export default function AdminPanelPlugin(config: any) {
-    let plugins = []
+    let plugins: any[] = []
 
     let collections = config.collections ?? []
 

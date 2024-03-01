@@ -12,14 +12,14 @@ export function form(fields: any[], actions: any[] = [], submit: any, load = '',
 	};
 }
 
-export function page({title, actions, content, hasBack} = {}) {
+export function page({title, actions, content, backUrl} = {}) {
 	return {
 		name: 'Page',
 		props: {
 			title: title ?? 'Page',
 			actions: actions ?? [],
 			content: content ?? [],
-            hasBack: hasBack ?? false
+            backUrl: backUrl ?? false
 		}
 	};
 }

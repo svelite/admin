@@ -13,7 +13,7 @@
 </script>
 <script>
     import {Layout, SidebarItem, Icon} from '$plugins/admin/components';
-
+	import styles from './AdminLayout.css?url'
 	let { dir, theme, logo, sidebar: sidebarItems = [], data, ...restProps } = $props();
 
 	let showSidebar = $state(false);
@@ -24,9 +24,10 @@
 </script>
 
 <svelte:head>
-<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href={styles}>
 
 </svelte:head>
+
 
 <Layout bind:showSidebar {dir} {theme} {...restProps}>
 	{#snippet header({ hasSidebar })}

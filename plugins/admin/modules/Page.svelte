@@ -5,7 +5,7 @@
 
 	import { Button, Icon, Page } from '$plugins/admin/components';
 
-	let { title = '', hasBack = false, content = [], ...data } = $props();
+	let { title = '', backUrl = '', content = [], ...data } = $props();
 
     let pageEl = $state();
 
@@ -16,7 +16,7 @@
     setContext('PAGE', {back})
 </script>
 
-<Page bind:this={pageEl} {hasBack} {title}>
+<Page bind:this={pageEl} {backUrl} {title}>
     {#snippet actions()}
 		{#each data.actions ?? [] as action}
             <Button color={action.color} href={action.href}>
@@ -29,6 +29,6 @@
         {/snippet}
 
 	{#snippet children()}
-		<SvSlot items={content} />
+		<SvSlot modules={content} />
 	{/snippet}
 </Page>

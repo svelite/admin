@@ -1,17 +1,17 @@
 import AdminPanelPlugin from './plugins/admin'
+import {normalizeConfig} from 'svelitecms'
 
-export default {
+const config = {
     plugins: [
        AdminPanelPlugin({
            pageManagement: false,
            collections: [
-               {name: 'Books', slug: 'books', fields: [
-                   {name: 'title', label: 'Title', type: 'plain_text'},
-                   {name: 'genre', label: 'Genre', type: 'plain_text'},
-                   {name: 'content', label: 'Content', type: 'rich_text', visibility: {
-                       list: false,
+               {name: 'Expenses', slug: 'expenses', fields: [
+                   {name: 'name', label: 'Name', type: 'plain_text'},
+                   {name: 'description', label: 'Description', type: 'plain_text'},
+                   {name: 'value', label: 'Value', type: 'number'},
+                   {name: 'is_deleted', label: 'Is Deleted', type: 'switch'},
 
-                   }, tab: 'Content'},
                ]}
            ]
             // admin panel config...
@@ -37,5 +37,15 @@ export default {
             ]
         }
     ],
-    api: 'http://localhost:3010/api'
+    api: 'http://localhost:3010/api',
+    $ctx: async () => {
+        const {createMemoryDb} = await import('svelitecms/db')
+        return {
+            db: createMemoryDb({})
+        }
+    }
 }
+
+// const conf = await normalizeConfig(config)
+
+export default config

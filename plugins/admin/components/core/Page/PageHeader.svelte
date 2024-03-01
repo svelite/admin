@@ -2,12 +2,12 @@
 	import Button from "../Button/Button.svelte";
 	import Icon from "../Icon/Icon.svelte";
 
-	let { title = '', hasBack, backUrl = '', children, ...rest } = $props();
+	let { title = '', backUrl = '', children, ...rest } = $props();
 </script>
 
 <div>
-    {#if hasBack}
-        <Button class="p-0 gap-0 -ms-1" size="sm" href={backUrl} ghost >
+    {#if backUrl}
+        <Button class="!p-0 !gap-1 -ms-1" size="sm" href={backUrl} ghost>
             <Icon name="chevron-left"/>
             Back
         </Button>
